@@ -6,15 +6,12 @@ Additionally, these API's could be used for interaction and modification of appl
 
 ## Definitions
 Definitions are work in progress as relates to PO requirements.
-HTTP verbs follow standard definitions and guidelines for GET/POST/PUT/DELETE unless specificallys stated below.
+HTTP verbs follow standard definitions and guidelines for GET/POST/PUT/DELETE unless specifically stated below.
 
 ### Clinical Categories
 GET /clinical-categories
 > Returns a list of clinical categories
-
-GET /clinical-categories/{clinical-category-cd}
-> Returns a single clinical category
-Response:
+> Response:
 ```
 JSON
 [
@@ -28,6 +25,9 @@ JSON
     }
 ]
 ```
+
+GET /clinical-categories/{clinical-category-cd}
+> Returns a single clinical category
 
 POST /clinical-categories {body}
 > Creates a new clinical category
@@ -44,6 +44,21 @@ GET /clinical-categories/{clinical-category-cd}/clinical-categories-services
 
 GET /clinical-categories/{clinical-category-cd}/clinical-category-services/{clinical-service-cd}
 > Returns a uniquely identifies this service cd
+> 
+> Response:
+```
+JSON
+[
+    {
+        "clinicalServiceCd" : "service 1",
+        "clinicalServiceDesc" : "service 1 description"        
+    },
+    {
+        "clinicalServiceCd" : "service 2",
+        "clinicalServiceDesc" : "service 2 description"            
+    }
+]
+```
 
 POST /clinical-categories/{clinical-category-cd}/clinical-category-services
 > Creates a new service code relationship to clinical-category-cd
@@ -78,7 +93,7 @@ PUT (Not needed as relationships really should not be updated)
 DELETE /clinical-services/{clinical-service-cd}/question-answers/{question-cd}
 > Removes the relationship between the clinical service and question answers.
 
-## Composite Service
+## Composite Services
 Composite service takes in a list of objects.
 POST is utilized over GET because of the following: UI team requested that there be one service given a set of codes to return a full, unique list of questions.
 GET has a limitation on length, thus a POST allows for room for growth and full object utilization if necessary.
@@ -86,6 +101,8 @@ GET has a limitation on length, thus a POST allows for room for growth and full 
 POST /clinical-services-question-answers
 > Given a list of clinical services will return a unique list of questions answers for this given post.
 > Content will be de-duplicated for answers.
+
+Detailed Design of internal components can be found here: [Clinical Services Design](ClinicalServicesQuestionAnswersDesignDetail.md)
 
 Request: Request should be a list of clinical-service-cds from 
 GET /clinical-services 

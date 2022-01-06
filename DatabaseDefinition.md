@@ -24,6 +24,8 @@ Provides a brief landscape of the database. Details described below.
 + CreateTimeStamp - Creation of this record.
 + LastUpdateTimestamp - LastUpdate of this record.
 
+> Possible extension point for: Weight of display Clinical Services, Predecessors, Successors
+
 ### ClinicalCategoryServices 
 > ManyToMany relationship table with ClinicalServices from ClinicalCategories, describes this ClinicalCategory has these related Clinical Services
 + ID - PKID Unique Id
@@ -38,6 +40,8 @@ Provides a brief landscape of the database. Details described below.
 + QuestionAnswerTypeId - FK Reference to QuestionAnswerType, each question can only have 1 answer type.
 + CreateTimeStamp - Creation of this record.
 + LastUpdateTimestamp - LastUpdate of this record.
+
+> Possible extension point for: Weight of display questions, new table for predecessors
 
 ### ClinicalServicesQuestions
 > ManyToMany relationship of clinical services to the list of appropriate questions.
