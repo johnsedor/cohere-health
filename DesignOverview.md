@@ -12,8 +12,8 @@ In the interest of brevity for the user, the questions asked must not be duplica
 
 ## Database Data Model
 Database model used for storage and retrieval of questions for a given service.
-[Database Definitions](DatabaseDefinitions.md)
+[Database Definition](DatabaseDefinition.md)
 
 ## API Model
 API Model covers aspects related to UI interactions an contracts.
-[API Model](APIDefinitions.md)
+[API Definition](APIDefinition.md)
