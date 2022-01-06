@@ -25,6 +25,16 @@ Application breakdown can be visualized as follows. The below diagram tries to c
     DTO should be a superset of Entities.   
 + Mappers - Functional oriented pieces of code for mapping DTO objects to Entity objects. Typically, composition and decomposition and straight mappings or conversions.
 
+## Design Guiding Principles
++ Simple solutions over complex ones. Unless a performance issues dictate optimizations of solutions, generic ones should work.
+    > Generic solutions should be easily transferable to their specific counterpart. IE: DB query optimization when required, otherwise use Java
++ Maintainability and extension of the code base. Assume others will be reusing components.
+    > Basic outline as described above should cover most business use cases.
++ Testing - Testing routes must be considered during design. Code should be designed to be tested.
+    > API routes can be disabled in PRD environment if only used for test data setup, but test data setup and teardown should be easily accomplished.
++ Simple resource usage
+    > Resources should be simply and plainly defined, complex relationships must be revalidated by API similarly to simple validations.
+
 ## Database Data Model
 Database model used for storage and retrieval of questions for a given service.
 [Database Definition](DatabaseDefinition.md)
@@ -35,3 +45,17 @@ API Model covers aspects related to UI interactions and contracts.
 
 ## Deep Dives
 + [Clinical Services Question Answers API](ClinicalServicesQuestionAnswersDesignDetail.md)
+
+## Other Thoughts and Future Work
++ Assumption is security will be handled in future design.
++ Storage of QuestionAnswers will be necessary in the near future
+    + Current recommendation is flat storage based on category/user id?
++ Re-validation of questions will be necessary during storage.
+    + Do not trust the UI to validate any question's answer(s).
++ Completeness of questions answered will need to be contemplated during storage.
+    + Did the user answer all the questions? 
+    + Are any questions missing.
++ Version control of QuestionAnswers should be considered. 
+    + Assuming change will come to all questions (text, answer type, etc) how will this be managed?
+    + Long term viewing of Question/Answer (redisplay of archived data) how will this be managed?
+    
